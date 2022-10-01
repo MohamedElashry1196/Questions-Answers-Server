@@ -43,6 +43,7 @@ def answer_question(question, text, qa_pipeline=qa_pipeline):
 def test_score(df):
     matched = 0 
     for ind in df.index:
+        print(ind)
         result = answer_question(df['question'][ind], df['text'][ind])
         act_answer = df['answer'][ind]
         prd_answer = result[1]
@@ -82,6 +83,7 @@ def score():
     form =  request.form
     sample_dataset = str(form['sample']).encode('utf-8')
     df = Data_cleaning(sample_dataset)
+    print(df)
     score = test_score(df)
     print(score)
     result.append(form['sample'])
