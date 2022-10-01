@@ -49,6 +49,7 @@ def test_score(df):
         prd_answer = result[1]
         if str(act_answer) in str(prd_answer) or str(prd_answer) in str(act_answer) :
             matched+=1
+            print("matched : " , matched )
     
     score = matched/len(df.index)
     
