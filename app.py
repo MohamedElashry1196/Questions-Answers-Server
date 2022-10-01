@@ -56,33 +56,29 @@ def test_score(df):
 app = Flask(__name__)
 
 
-@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/predict', methods=['POST'])
 def index():
-  
-    if request.method == 'POST':
-      result = []
-      form = request.form
-      bert_abstract = form['paragraph']
-      question = form['question']
-      result.append(form['question'])
-      answer,score = answer_question(question, bert_abstract)
-      result.append(answer)
-      result.append(score)
-      result.append(form['paragraph'])
+    result = []
+    form = request.get_json()
+    bert_abstract = form['paragraph']
+    question = form['question']
+    result.append(form['question'])
+    answer,score = answer_question(question, bert_abstract)
+    result.append(form['paragraph'])
+    result.append(answer)
+    result.append(score)
 
     return jsonify({'result' : result})
 
-@app.route('/score', methods=['GET', 'POST'])
+@app.route('/score', methods=['POST'])
 def score():
-    if request.method == 'POST':
-      sample = request.files['sample']
-      _result = []
-      sample_dataset =str(sample).encode('utf-8')
-
-      df = Data_cleaning(sample_dataset)
-      score = test_score(df)
-      _result.append(form['score'])
-      _result.append(score)
+    result = []
+    form = request.get_json()
+    sample_dataset = str(form['sample']).encode('utf-8')
+    df = Data_cleaning(sample_dataset)
+    score = test_score(df)
+    result.append(form['sample'])
+    result.append(score)
     
     return jsonify({'result' : result})
 
