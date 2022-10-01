@@ -1,0 +1,8 @@
+https://download.pytorch.org/whl/cpu/torch-1.10.0%2Bcpu-cp39-cp39-linux_x86_64.whl
+sentencepiece==0.1.97
+transformers==4.2.2
+numpy==1.19.1
+joblib==0.16.0
+flask
+pandas
+urllib3==1.25.10
