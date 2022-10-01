@@ -81,9 +81,9 @@ def score():
     # result.append(score)
     form =  request.form
     sample_dataset = str(form['sample']).encode('utf-8')
-    print(sample_dataset)
     df = Data_cleaning(sample_dataset)
     score = test_score(df)
+    print(score)
     result.append(form['sample'])
     result.append(score)
     
