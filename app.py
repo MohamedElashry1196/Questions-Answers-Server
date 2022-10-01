@@ -67,17 +67,22 @@ def index():
     result.append(form['paragraph'])
     result.append(answer)
     result.append(score)
-
+    
     return jsonify({'result' : result})
 
 @app.route('/score', methods=['POST'])
 def score():
     result = []
-    form = request.get_json()
-    sample_dataset = str(form['sample']).encode('utf-8')
+    # form = request.get_json()
+    # sample_dataset = str(form['sample']).encode('utf-8')
+    # df = Data_cleaning(sample_dataset)
+    # score = test_score(df)
+    # result.append(form['sample'])
+    # result.append(score)
+    sample_dataset = str(request.data).encode('utf-8')
     df = Data_cleaning(sample_dataset)
     score = test_score(df)
-    result.append(form['sample'])
+    result.append(request.data)
     result.append(score)
     
     return jsonify({'result' : result})
