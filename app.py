@@ -13,7 +13,7 @@ qa_pipeline = pipeline(
 
 def Data_cleaning (data):
   data = eval(repr(data))
-#   data = json.loads(data, strict=False)
+  data = json.loads(data, strict=False)
   df = pd.DataFrame.from_dict(data)
   cols = ["text","question","answer"]
   comp_list = []
@@ -79,10 +79,12 @@ def score():
     # score = test_score(df)
     # result.append(form['sample'])
     # result.append(score)
-    sample_dataset = str(request.data).encode('utf-8')
+    form =  request.form
+    sample_dataset = str(form['sample']).encode('utf-8')
+    print(sample_dataset)
     df = Data_cleaning(sample_dataset)
     score = test_score(df)
-    result.append(request.data)
+    result.append(form['sample'])
     result.append(score)
     
     return jsonify({'result' : result})
