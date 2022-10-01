@@ -13,7 +13,7 @@ qa_pipeline = pipeline(
 
 def Data_cleaning (data):
   data = eval(repr(data))
-  data = json.loads(data, strict=False)
+#   data = json.loads(data, strict=False)
   df = pd.DataFrame.from_dict(data)
   cols = ["text","question","answer"]
   comp_list = []
