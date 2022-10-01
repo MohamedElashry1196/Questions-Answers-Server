@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request jsonify 
+from flask import Flask, render_template, request , jsonify 
 from transformers import pipeline
 import pandas as pd
 import json
