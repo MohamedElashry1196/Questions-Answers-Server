@@ -73,7 +73,8 @@ def hello():
 @cross_origin()
 def index():
     result = []
-    form = request.get_json()
+    form =  request.form
+    print(form)
     bert_abstract = form['paragraph']
     question = form['question']
     result.append(form['question'])
