@@ -73,7 +73,7 @@ def hello():
 @cross_origin()
 def index():
     result = []
-    form = request.get_json()
+    form = request.form
     print(form)
     bert_abstract = form['paragraph']
     question = form['question']
@@ -95,7 +95,7 @@ def score():
     # score = test_score(df)
     # result.append(form['sample'])
     # result.append(score)
-    form =  request.form
+    form = request.form
     sample_dataset = str(form['sample']).encode('utf-8')
     df = Data_cleaning(sample_dataset)
     print(df)
