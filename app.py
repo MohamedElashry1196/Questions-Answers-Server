@@ -70,17 +70,11 @@ def hello():
 @app.route('/predict', methods=['POST'])
 @cross_origin()
 def index():
-    result = []
     form = request.form
-    print(form)
     bert_abstract = form['paragraph']
     question = form['question']
-    result.append(form['question'])
     answer,score = answer_question(question, bert_abstract)
-    result.append(form['paragraph'])
-    result.append(answer)
-    result.append(score)
-    
+
     return jsonify(
         answer = str(answer),
         score = str(score)
@@ -89,21 +83,12 @@ def index():
 @app.route('/score', methods=['POST'])
 @cross_origin()
 def score():
-    result = []
-    # form = request.get_json()
-    # sample_dataset = str(form['sample']).encode('utf-8')
-    # df = Data_cleaning(sample_dataset)
-    # score = test_score(df)
-    # result.append(form['sample'])
-    # result.append(score)
     form = request.form
     sample_dataset = str(form['sample']).encode('utf-8')
     df = Data_cleaning(sample_dataset)
     print(df)
     score = test_score(df)
     print(score)
-    result.append(form['sample'])
-    result.append(score)
     
     return jsonify(score = str(score))
 
