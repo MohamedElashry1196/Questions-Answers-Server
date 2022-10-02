@@ -1,5 +1,7 @@
 import os
 from flask import Flask, render_template, request , jsonify 
+from flask_cors import CORS
+from flask_cors import cross_origin
 from transformers import pipeline
 import pandas as pd
 import json
@@ -58,9 +60,17 @@ def test_score(df):
     return score
 
 app = Flask(__name__)
+cors = CORS(app)
+
+@app.route("/")
+def hello():
+  
+    return '''<h1>hello</h1>'''                 
+
 
 
 @app.route('/predict', methods=['POST'])
+@cross_origin()
 def index():
     result = []
     form = request.get_json()
@@ -75,6 +85,7 @@ def index():
     return jsonify({'result' : result})
 
 @app.route('/score', methods=['POST'])
+@cross_origin()
 def score():
     result = []
     # form = request.get_json()
