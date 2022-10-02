@@ -82,10 +82,10 @@ def index():
     result.append(score)
     
     return jsonify(
-        paragraph = form['paragraph'],
-        question = form['question'],
-        answer = answer,
-        score = score
+        paragraph = str(form['paragraph']).encode('utf-8'),
+        question = str(form['question']).encode('utf-8'),
+        answer = str(answer).encode('utf-8'),
+        score = str(score).encode('utf-8')
     )
 
 @app.route('/score', methods=['POST'])
