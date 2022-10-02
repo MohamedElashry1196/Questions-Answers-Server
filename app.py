@@ -82,8 +82,6 @@ def index():
     result.append(score)
     
     return jsonify(
-        paragraph = str(form['paragraph']),
-        question = str(form['question']),
         answer = str(answer),
         score = str(score)
     )
@@ -107,7 +105,7 @@ def score():
     result.append(form['sample'])
     result.append(score)
     
-    return jsonify({'result' : result})
+    return jsonify(score = str(score))
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
