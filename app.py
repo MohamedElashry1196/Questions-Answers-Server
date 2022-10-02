@@ -67,8 +67,6 @@ def hello():
   
     return '''<h1>hello</h1>'''                 
 
-
-
 @app.route('/predict', methods=['POST'])
 @cross_origin()
 def index():
@@ -83,7 +81,7 @@ def index():
     result.append(answer)
     result.append(score)
     
-    return jsonify({'result' : result})
+    return jsonify(result)
 
 @app.route('/score', methods=['POST'])
 @cross_origin()
