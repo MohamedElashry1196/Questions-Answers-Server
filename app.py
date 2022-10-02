@@ -81,7 +81,12 @@ def index():
     result.append(answer)
     result.append(score)
     
-    return jsonify(result)
+    return jsonify(
+        paragraph = paragraph,
+        question = question,
+        answer = answer,
+        score = score
+    )
 
 @app.route('/score', methods=['POST'])
 @cross_origin()
