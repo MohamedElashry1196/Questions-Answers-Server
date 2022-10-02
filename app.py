@@ -82,8 +82,8 @@ def index():
     result.append(score)
     
     return jsonify(
-        paragraph = paragraph,
-        question = question,
+        paragraph = form['paragraph'],
+        question = form['question'],
         answer = answer,
         score = score
     )
