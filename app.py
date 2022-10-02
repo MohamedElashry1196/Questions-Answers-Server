@@ -48,7 +48,7 @@ def test_score(df):
         print(ind)
         result = answer_question(df['question'][ind], df['text'][ind])
         act_answer = df['answer'][ind]
-        prd_answer = result['answer']
+        prd_answer = result[0]
         print(act_answer)
         print(prd_answer)
         if str(act_answer) in str(prd_answer) or str(prd_answer) in str(act_answer) :
